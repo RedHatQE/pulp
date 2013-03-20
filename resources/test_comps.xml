@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE comps PUBLIC "-//Red Hat, Inc.//DTD Comps info//EN" "comps.dtd">
+<comps>
+	<group>
+		<id>Test_Comps_Group</id>
+		<name>Test_Comps_Group</name>
+		<description>Test</description>
+		<default>true</default>
+		<uservisible>true</uservisible>
+		<packagelist>
+			<packagereq type="default">patb</packagereq>
+			<packagereq type="default">emoticons</packagereq>
+		</packagelist>
+	</group>
+	<group>
+		<id>Clones</id>
+		<name>Clones</name>
+		<description>This group is a collection of pkgs used by clone tests</description>
+		<default>true</default>
+		<uservisible>true</uservisible>
+		<packagelist>
+			<packagereq type="default">origin</packagereq>
+			<packagereq type="default">parent</packagereq>
+			<packagereq type="default">feedless</packagereq>
+		</packagelist>
+	</group>
+</comps>

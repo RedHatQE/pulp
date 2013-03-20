@@ -1,0 +1,115 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PulpCLITest">
+	<test name="SmokeTest">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.SmokeTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="smokeTest"/>
+			</run>
+		</groups>
+	</test>
+	<test name="Repo">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.RepoTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testRepo"/>
+			</run>
+		</groups>
+	</test>
+	<test name="Package">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.PackageTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testPackage"/>
+			</run>
+		</groups>
+	</test>
+<!--
+	<test name="Package_Group">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.PackageGroupTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testPackageGroup"/>
+			</run>
+		</groups>
+	</test>
+-->
+	<test name="Errata">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.ErrataTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testErrata"/>
+			</run>
+		</groups>
+	</test>
+	<test name="Repo_Cloning">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.RepoCloningTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testRepoCloning"/>
+			</run>
+		</groups>
+	</test>
+<!--
+	<test name="Consumer">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.ConsumerTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testConsumer"/>
+			</run>
+		</groups>
+	</test>
+	<test name="Content">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.ContentTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testContent"/>
+			</run>
+		</groups>
+	</test>
+	<test name="CDS">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.CDSTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testCDS"/>
+			</run>
+		</groups>
+	</test>
+-->
+</suite>

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PulpCLITest">
+	<test name="Repo_Cert">
+		<classes>
+			<class name="com.redhat.qe.pulp.v2_cli.tests.RepoCertTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testRepoCert"/>
+			</run>
+		</groups>
+	</test>
+</suite>

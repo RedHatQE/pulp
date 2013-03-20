@@ -1,0 +1,12 @@
+# gnuplot script for pulp metric gathering
+
+set terminal png size 1024, 640
+
+set output 'OUTPUT_FILE_NAME'
+
+set style data lines
+set grid
+
+set ylabel "MB"
+set xlabel "Record"
+plot 'DATA_FILE_NAME' using 0:2 title 'MEM_Used' with lines

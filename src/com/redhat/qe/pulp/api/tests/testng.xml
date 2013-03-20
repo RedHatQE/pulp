@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PulpAPITest">
+	<test name="pulp repo">
+		<classes>
+			<class name="com.redhat.qe.pulp.api.tests.RepoTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="setup"/>
+				<include name="teardown"/>
+				<include name="testRepo"/>
+			</run>
+		</groups>
+	</test>
+<!--
+	<test name="jwm repo">
+		<classes>
+			<class name="com.redhat.qe.pulp.api.tests.jwmTest"/>
+		</classes>
+		<groups>
+			<run>
+				<include name="jwmTest"/>
+			</run>
+		</groups>
+	</test>
+	-->
+</suite>

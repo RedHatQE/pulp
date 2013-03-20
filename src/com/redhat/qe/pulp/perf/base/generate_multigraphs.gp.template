@@ -1,0 +1,40 @@
+# gnuplot script for pulp metric gathering
+
+set terminal png size 1024, 640
+
+set output 'stat.png'
+set multiplot
+
+set style data lines
+set grid
+
+set xdata time
+set timefmt "%H:%M:%S"
+set format x "%H:%M"
+
+set bmargin 0
+set size 1, 0.3
+set origin 0, 0.0
+set bmargin 3
+set tmargin 0
+#set ylabel "read|write"
+unset ytics
+plot 'stat_8' using 1:6 title 'read/s' with lines, 'stat_8' using 1:7 title 'write/s' with lines
+
+#set ylabel "%"
+set size 1, 0.3
+set origin 0, 0.3
+set bmargin 0
+set tmargin 1
+unset xtics
+unset ytics
+plot 'stat_8' using 1:8 title 'user' with lines, 'stat_8' using 1:9 title 'sys' with lines
+
+#set ylabel "mb"
+set size 1, 0.4
+set origin 0, 0.570
+set bmargin 0
+set tmargin 1
+unset xtics
+unset ytics
+plot 'stat_8' using 1:2 title 'mem_used' with impulses

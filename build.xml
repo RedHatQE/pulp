@@ -1,0 +1,110 @@
+<project name="PulpAutomation" default="compile" basedir=".">
+	<property environment="env" />
+	<property name="test.build.dir" location="bin" />
+	<property name="test.src.dir" location="src" />
+	<property name="test.output.dir" location="test-output" />
+	<property name="automation.conf.file" value="conf/pulp_automation.conf"/>
+	<property name="log.conf.file" value="conf/log.properties"/>
+	<property name="report.dir" value="test-output/Hudson_Test_Suite"/>
+	<property name="testscript.dir" value="./logging-testscript"/>
+	<property name="ssh.tools.dir" value="./ssh-tools"/>
+
+	<path id="utils.cp">
+<!--
+		<fileset dir="${webui-framework.dir}/lib">
+			<include name="*.jar" />
+		</fileset>
+-->
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="tests.cp">
+		<pathelement location="${test.build.dir}" />
+		<pathelement location="${testscript.dir}/src" />
+		<pathelement location="${ssh.tools.dir}/src" />
+		<path refid="utils.cp" />
+	</path>
+
+	<taskdef name="testng" classpathref="utils.cp" classname="org.testng.TestNGAntTask"/>
+
+	<target name="deps">
+		<echo message="Compiling dependencies in ${testscript.dir}" />
+		<javac srcdir="${testscript.dir}" destdir="${test.build.dir}" classpathref="tests.cp" debug="on">
+			<compilerarg value="-Xlint"/>
+		</javac>
+
+<!--
+		<ant antfile="${webui-framework.dir}/build.xml">
+			<property name="basedir" value="${webui-framework.dir}" />
+		</ant>
+-->
+		<echo message="Compiling dependencies in ${ssh.tools.dir}" />
+		<javac srcdir="${ssh.tools.dir}" destdir="${test.build.dir}" classpathref="tests.cp" debug="on">
+			<compilerarg value="-Xlint"/>
+		</javac>
+
+
+	</target>
+
+	<target name="compile" depends="">
+		<echo message="Compiling testsuite in ${basedir}" />
+		<antcall target="deps" />
+		<mkdir dir="${test.build.dir}" />
+
+		<javac srcdir="${test.src.dir}" destdir="${test.build.dir}" classpathref="tests.cp" debug="on">
+			<compilerarg value="-Xlint"/>
+		</javac>
+		<echo message="Done." />
+	</target>
+
+	<target name="cli" depends="compile">
+		<testng haltonfailure="false" classpathref="tests.cp" reporter="org.testng.reporters.JUnitXMLReporter" outputdir="${test.output.dir}" listeners="com.redhat.qe.auto.testng.TestNGListener">
+			<sysproperty key="automation.propertiesfile" value="${automation.conf.file}"/>
+			<sysproperty key="log.propertiesfile" value="${log.conf.file}"/>
+			<xmlfileset dir="src/com/redhat/qe/pulp/cli/tests" includes="testng.xml"/>
+		</testng>
+	</target>
+
+	<target name="api" depends="compile">
+		<testng haltonfailure="false" classpathref="tests.cp" reporter="org.testng.reporters.JUnitXMLReporter" outputdir="${test.output.dir}" listeners="com.redhat.qe.auto.testng.TestNGListener">
+			<sysproperty key="automation.propertiesfile" value="${automation.conf.file}"/>
+			<sysproperty key="log.propertiesfile" value="${log.conf.file}"/>
+			<xmlfileset dir="src/com/redhat/qe/pulp/api/tests" includes="testng.xml"/>
+		</testng>
+	</target>
+
+	<target name="perf" depends="compile">
+		<testng haltonfailure="false" classpathref="tests.cp" reporter="org.testng.reporters.JUnitXMLReporter" outputdir="${test.output.dir}" listeners="com.redhat.qe.auto.testng.TestNGListener">
+			<sysproperty key="automation.propertiesfile" value="${automation.conf.file}"/>
+			<sysproperty key="log.propertiesfile" value="${log.conf.file}"/>
+			<xmlfileset dir="src/com/redhat/qe/pulp/perf/tests" includes="testng.xml"/>
+		</testng>
+	</target>
+
+	<target name="cdn_cli" depends="compile">
+		<testng haltonfailure="false" classpathref="tests.cp" reporter="org.testng.reporters.JUnitXMLReporter" outputdir="${test.output.dir}" listeners="com.redhat.qe.auto.testng.TestNGListener">
+			<sysproperty key="automation.propertiesfile" value="${automation.conf.file}"/>
+			<sysproperty key="log.propertiesfile" value="${log.conf.file}"/>
+			<xmlfileset dir="src/com/redhat/qe/pulp/cli/tests" includes="cdn_testng.xml"/>
+		</testng>
+	</target>
+
+	<target name="cli_v2" depends="compile">
+		<testng haltonfailure="false" classpathref="tests.cp" reporter="org.testng.reporters.JUnitXMLReporter" outputdir="${test.output.dir}" listeners="com.redhat.qe.auto.testng.TestNGListener">
+			<sysproperty key="automation.propertiesfile" value="${automation.conf.file}"/>
+			<sysproperty key="log.propertiesfile" value="${log.conf.file}"/>
+			<xmlfileset dir="src/com/redhat/qe/pulp/v2_cli/tests" includes="testng.xml"/>
+		</testng>
+	</target>
+
+	<target name="clean">
+		<echo message="Cleaning ${test.build.dir}"/>
+		
+		<delete failonerror="true" quiet="false" includeemptydirs="true">
+	    		<fileset dir="${test.build.dir}" includes="**/*"/>
+	      	</delete>
+		<delete dir="${test.output.dir}"/>
+	</target>
+</project>

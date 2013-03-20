@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PulpPerformanceTest">
+	<test name="Repo">
+		<classes>
+			<class name="com.redhat.qe.pulp.perf.tests.RepoPerfTest"/>
+		</classes>
+	</test>
+</suite>
