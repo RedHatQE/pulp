@@ -1,1 +1,5 @@
 conf/pulp_automation.prop
+.gradle/
+.ssh/
+build/
+test-output/
