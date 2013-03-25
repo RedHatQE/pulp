@@ -1,6 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="PulpCLITest">
-<!--
 	<test name="SmokeTest">
 		<classes>
 			<class name="com.redhat.qe.pulp.cli.tests.SmokeTest"/>
@@ -49,7 +48,6 @@
 			</run>
 		</groups>
 	</test>
--->
 	<test name="Errata">
 		<classes>
 			<class name="com.redhat.qe.pulp.cli.tests.ErrataTest"/>
@@ -62,7 +60,6 @@
 			</run>
 		</groups>
 	</test>
-<!--
 	<test name="Repo_Cloning">
 		<classes>
 			<class name="com.redhat.qe.pulp.cli.tests.RepoCloningTest"/>
@@ -111,5 +108,4 @@
 			</run>
 		</groups>
 	</test>
--->
 </suite>
