@@ -15,13 +15,13 @@ Running Tests:
 	4. Edit conf/pulp_automation.conf
 	5. Type the following command in the terminal:
 		CLI Automation:
-			gradle runTestng -Dtestng.suites=cli/tests/testng.xml --info --stacktrace
+			gradle runTestng -Dtestng.suites=cli/tests/testng.xml -Dautomation.propertiesfile=./conf/pulp_automation.conf --info --stacktrace
 		V2 CLI Automation:
-			gradle runTestng -Dtestng.suites=v2_cli/tests/testng.xml --info --stacktrace
+			gradle runTestng -Dtestng.suites=v2_cli/tests/testng.xml -Dautomation.propertiesfile=./conf/pulp_automation.conf --info --stacktrace
 		API Automation:
-			gradle runTestng -Dtestng.suites=api/tests/testng.xml --info --stacktrace
+			gradle runTestng -Dtestng.suites=api/tests/testng.xml -Dautomation.propertiesfile=./conf/pulp_automation.conf --info --stacktrace
 		Perf Automation:
-			gradle runTestng -Dtestng.suites=perf/tests/testng.xml --info --stacktrace
+			gradle runTestng -Dtestng.suites=perf/tests/testng.xml -Dautomation.propertiesfile=./conf/pulp_automation.conf --info --stacktrace
 
 Output: 
 	Test outputs are located by default in ./testing-output folder.

@@ -35,7 +35,7 @@ public class PulpTasks {
 		try {
 			parent = getClass().getClassLoader();
 			loader = new GroovyClassLoader(parent);
-			groovyClass = loader.parseClass(new File(System.getProperty("pulp.automation.home")+"/abstraction/YumMetadataParser.groovy"));
+			groovyClass = loader.parseClass(new File(System.getProperty("pulp.automation.home") + "/abstraction/YumMetadataParser.groovy"));
 			groovyObject = (GroovyObject) groovyClass.newInstance();
 		}
 		catch (Exception e) {
@@ -92,7 +92,8 @@ public class PulpTasks {
 
 
 	public void login() {
-		Assert.assertEquals(sshCommandRunner.runCommandAndWait("pulp-admin -u admin -p admin auth login -u admin -p admin").getExitCode(), Integer.valueOf(0), "Loging in: ");
+		sshCommandRunner.runCommandAndWait("pulp-admin -u admin -p admin auth login -u admin -p admin");
+		Assert.assertEquals(sshCommandRunner.getExitCode(), Integer.valueOf(0), "Logging in: ");
 	}
 
 	public void logout() {

@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Hashtable;
+import java.io.InputStream;
+import java.util.Properties;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -23,21 +25,23 @@ import com.redhat.qe.auto.testng.TestNGUtils;
 import com.redhat.qe.pulp.cli.tasks.PulpTasks;
 
 public class PulpTestScript extends com.redhat.qe.auto.testng.TestScript {
-	protected String serverHostname			= System.getProperty("pulp.server.hostname");
+    protected Properties prop;
 
-	protected String clientHostname			= System.getProperty("pulp.client.hostname");
+	protected String serverHostname;
 
-	protected String sshUser			= System.getProperty("pulp.ssh.user","root");
-	protected String sshPassphrase			= System.getProperty("pulp.ssh.passphrase","");
-	protected String sshKeyPrivate			= System.getProperty("pulp.sshkey.private",".ssh/id_auto_dsa");
-	protected String sshKeyPassphrase		= System.getProperty("pulp.sshkey.passphrase","");
+	protected String clientHostname;
+
+	protected String sshUser;
+	protected String sshPassphrase;
+	protected String sshKeyPrivate;
+	protected String sshKeyPassphrase;
 	
-	protected String consumerId			= "test_consumer";
-	protected String consumerGroupId		= "test_consumer_group";
+	protected String consumerId;
+	protected String consumerGroupId;
 
-	protected String tmpRpmDir			= System.getProperty("pulp.tmpRpmDir");
+	protected String tmpRpmDir;
 
-	protected String reinstall_flag			= System.getProperty("pulp.reinstall");
+	protected String reinstall_flag;
 
 	public static SSHCommandRunner server	= null;
 	public static SSHCommandRunner client	= null;
@@ -49,6 +53,17 @@ public class PulpTestScript extends com.redhat.qe.auto.testng.TestScript {
 
 	public PulpTestScript() {
 		super();
+
+        serverHostname = System.getProperty("pulp.server.hostname");
+        clientHostname = System.getProperty("pulp.client.hostname");
+        sshUser = System.getProperty("pulp.ssh.user", "root");
+        sshPassphrase = System.getProperty("pulp.ssh.passphrase", "");
+        sshKeyPrivate = System.getProperty("pulp.sshkey.private", ".ssh/id_auto_dsa");
+        sshKeyPassphrase = System.getProperty("pulp.sshkey.passphrase", "");
+        tmpRpmDir = System.getProperty("pulp.tmpRpmDir");
+        reinstall_flag = System.getProperty("pulp.reinstall");
+        consumerId	= "test_consumer";
+        consumerGroupId = "test_consumer_group";
 
 		pulpAbs = new PulpAbstraction();	
 	

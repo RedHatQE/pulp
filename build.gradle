@@ -130,21 +130,16 @@ task printProps << {
 
 task runTestng(dependsOn: 'testClasses') << {
     def systemProperties = System.properties
-	println System.properties
+	//println System.properties
     // Defaults to $WORKSPACE, or if that's null, cwd
     //def workspace = System.getProperty("workspace.dir", System.getenv("WORKSPACE") ?: System.properties["user.dir"])
     def workspace = "./"
-	logger.warn("workspace dir: $workspace" )
     //def testngProjectDir = System.getProperty("testng.project.dir", "automatjon/jon")
     def testngProjectDir = "./"
-	logger.warn("testngProjectDir dir: $testngProjectDir" )
     def automationDir = "."
-	logger.warn("automation dir: $automationDir" )
     System.properties["automation.dir"] = automationDir.toString()
     def outputDir = System.getProperty("testng.outputdir", "${automationDir}/test-output")
-	logger.warn("output dir: $outputDir" )
     def xmlSuite = System.properties["testng.suites"]
-	logger.warn("xmlSuite: $xmlSuite" )
     
     // Comma-separated list of listeners. If this property doesn't exist, will choose some defaults
     def testngListeners = System.properties["testng.listeners"]
