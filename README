@@ -1,12 +1,11 @@
 Purpose: This project is created to automate testing for pulp.
 
 Dependencies:
-	TestNG module from webui-framework
 	properly installed pulp (refer to the pulp wiki: https://fedorahosted.org/pulp/wiki/Install)
 
 Compile:
 	Type the following command in the terminal:
-	ant
+	gradle compileGroovy
 
 Running Tests:
 	1. Run the following command in the same directory as this folder: ssh-keygen -f .ssh/id_auto_dsa
