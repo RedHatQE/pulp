@@ -8,7 +8,7 @@ Compile:
 	gradle compileGroovy
 
 Running Tests:
-	1. Run the following command in the same directory as this folder: ssh-keygen -f .ssh/id_auto_dsa
+	1. Run the following command in the same directory as this folder: mkdir .ssh & ssh-keygen -f .ssh/id_auto_dsa
 	2. Enter a password for the ssh key.
 	3. Copy resource folder to a common accessible host. 
 	4. Edit conf/pulp_automation.conf
