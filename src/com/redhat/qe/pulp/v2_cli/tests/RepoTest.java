@@ -409,7 +409,7 @@ public class RepoTest extends PulpTestScript {
 		repoOpts = new ArrayList<String>();
 		repoOpts.add("--repo-id=relative_test_repo");
 		repoOpts.add("--feed=http://qeblade20.rhq.lab.eng.bos.redhat.com/pub/updates/");
-		repoOpts.add("--relative-url="+relativeRepoPath);
+		repoOpts.add("--relative-url=/pulp_relative_repo/");
 		data.add(Arrays.asList(new Object[]{repoOpts, false}));
 
 		repoOpts = new ArrayList<String>();
