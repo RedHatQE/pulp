@@ -2,6 +2,7 @@ Purpose: This project is created to automate testing for pulp.
 
 Dependencies:
 	properly installed pulp (refer to the pulp wiki: https://fedorahosted.org/pulp/wiki/Install)
+        gradle is installed (refer to http://www.gradle.org/docs/current/userguide/installation.html)
 
 Compile:
 	Type the following command in the terminal:
