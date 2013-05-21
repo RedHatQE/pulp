@@ -11,9 +11,10 @@ Compile:
 Running Tests:
 	1. Run the following command in the same directory as this folder: mkdir .ssh & ssh-keygen -f .ssh/id_auto_dsa
 	2. Enter a password for the ssh key.
-	3. Copy resource folder to a common accessible host. 
-	4. Edit conf/pulp_automation.conf
-	5. Type the following command in the terminal:
+	3. Run the following command: ssh-copy-id -i .ssh/id_auto_dsa.pub root@{PULP_SERVER_HOSTNAME}
+	4. Copy resource folder to an apache host so that {PULP_SERVER_HOSTNAME} can access the content. 
+	5. Edit conf/pulp_automation.conf
+	6. Type the following command in the terminal:
 		CLI Automation:
 			gradle runTestng -Dtestng.suites=cli/tests/testng.xml -Dautomation.propertiesfile=./conf/pulp_automation.conf --info --stacktrace
 		V2 CLI Automation:
