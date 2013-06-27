@@ -310,9 +310,9 @@ public class RepoTest extends PulpTestScript {
 	}
 
 	@Test (groups={"testRepo"})
-	public void dupRepoId() {
-		servertasks.createTestRepo("bad_test_repo", true);
-		servertasks.createTestRepo("bad_test_repo", false);
+	public void dupeRepoId() {
+		servertasks.createTestRepo("dupe_test_repo", true);
+		servertasks.createTestRepo("dupe_test_repo", false);
 	}
 	
 	@Test (groups={"testRepo"}, dataProvider="negRepoData")
@@ -355,6 +355,7 @@ public class RepoTest extends PulpTestScript {
 			String repoId = ((String)repoData.get(0)).replace("--repo-id=", "");
 			servertasks.deleteTestRepo(repoId);
 		}
+		servertasks.deleteTestRepo("dupe_test_repo");
 		servertasks.deleteTestRepo("bad_test_repo");
 	}
 
